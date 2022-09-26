@@ -20,7 +20,7 @@ function App() {
           <Switch
             checked={isCn}
             onChange={setIsCn}
-            className={`${isCn ? 'bg-teal-700' : 'bg-teal-900'
+            className={`${isCn ? 'bg-teal-900' : 'bg-teal-900'
               } relative inline-flex h-6 w-11 items-center rounded-full`}
           >
             <span className="sr-only">Enable notifications</span>
@@ -36,7 +36,7 @@ function App() {
           </button>
 
         </div>
-        <div className="flex justify-center ml-4 items-center">
+        <div className="flex justify-center ml-4 items-center"> 
 
           <img src={process.env.PUBLIC_URL + src} />
         </div>
