@@ -36,7 +36,7 @@ function App() {
           </button>
 
         </div>
-        <div className="flex justify-center ml-4 items-center"> 
+        <div className="flex justify-center items-center"> 
 
           <img src={process.env.PUBLIC_URL + src} />
         </div>
