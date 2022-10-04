@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Switch } from '@headlessui/react'
 import ListBox from "./ListBox";
 import { useNavigate } from "react-router-dom";
@@ -6,9 +6,17 @@ import { useNavigate } from "react-router-dom";
 const SleepAndPeel = () => {
 
     const navigate = useNavigate();
-    
 
-    const [isCn, setIsCn] = useState(true);
+    useEffect(() => {
+        const language = navigator.language; 
+        if (language === "ja" || language === "ja-JP") {
+            setIsCn(false)
+        } else {
+            setIsCn(true);
+        };
+    } ,[]);
+
+    const [isCn, setIsCn] = useState();
     const [src, setSrc] = useState("/sleepandpeel/img_sleepandpeel_cn.jpg");
 
     const handleClick = () => {
@@ -17,7 +25,6 @@ const SleepAndPeel = () => {
     }
 
     const handleIndicatorChange = (e) => {
-        // console.log(e);
         navigate(`/${e.value}`);
     }
 

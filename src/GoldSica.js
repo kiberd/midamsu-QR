@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Switch } from '@headlessui/react'
 import ListBox from "./ListBox";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,16 @@ const GoldSica = () => {
 
     const navigate = useNavigate();
 
-    const [isCn, setIsCn] = useState(true);
+    useEffect(() => {
+        const language = navigator.language; 
+        if (language === "ja" || language === "ja-JP") {
+            setIsCn(false)
+        } else {
+            setIsCn(true);
+        };
+    } ,[]);
+
+    const [isCn, setIsCn] = useState();
     const [src, setSrc] = useState("/goldcica/img_goldcica_cn.jpg");
 
     const handleClick = () => {
