@@ -4,7 +4,7 @@ import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 
 const indicator = [
   { id: 0, name: "SleepAndPeel", value: "sleepandpeel" },
-  { id: 1, name: "GoldSica", value: "goldcica" },
+  { id: 1, name: "GoldCica", value: "goldcica" },
   { id: 2, name: "Salmon", value: "salmon" },
 ];
 
