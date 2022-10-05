@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 const SleepAndPeel = () => {
 
     const navigate = useNavigate();
+    const [isCn, setIsCn] = useState();
+    const [src, setSrc] = useState();
+
 
     useEffect(() => {
         const language = navigator.language; 
@@ -16,13 +19,15 @@ const SleepAndPeel = () => {
         };
     } ,[]);
 
-    const [isCn, setIsCn] = useState();
-    const [src, setSrc] = useState("/sleepandpeel/img_sleepandpeel_cn.jpg");
+    useEffect(() => {
+        isCn ?  setSrc("/sleepandpeel/img_sleepandpeel_cn.jpg") :  setSrc("/sleepandpeel/img_sleepandpeel_jp.jpg");
+    } ,[isCn]);
 
     const handleClick = () => {
         setIsCn(!isCn);
-        isCn ? setSrc("/sleepandpeel/img_sleepandpeel_jp.jpg") : setSrc("/sleepandpeel/img_sleepandpeel_cn.jpg");
+        isCn ? setSrc("/salmon/img_salmon_cn.jpg") : setSrc("/salmon/img_salmon_jp.jpg");
     }
+
 
     const handleIndicatorChange = (e) => {
         navigate(`/${e.value}`);
@@ -49,7 +54,7 @@ const SleepAndPeel = () => {
                         />
                     </Switch>
 
-                    <span className="ml-1 w-[50px] text-center font-semibold text-sm">{isCn ? "日本語" : "中文"}</span>
+                    <span className="ml-1 w-[50px] text-center font-semibold text-sm">{isCn ? "中文" : "日本語"}</span>
                 </div>
             </div>
             <div className="flex items-center justify-center mt-4">

@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 const Salmon = () => {
 
     const navigate = useNavigate();
+    const [isCn, setIsCn] = useState();
+    const [src, setSrc] = useState();
 
     useEffect(() => {
         const language = navigator.language; 
@@ -16,12 +18,13 @@ const Salmon = () => {
         };
     } ,[]);
 
-    const [isCn, setIsCn] = useState();
-    const [src, setSrc] = useState("/salmon/img_salmon_cn.jpg");
+    useEffect(() => {
+        isCn ?  setSrc("/salmon/img_salmon_cn.jpg") :  setSrc("/salmon/img_salmon_jp.jpg");
+    } ,[isCn]);
 
     const handleClick = () => {
         setIsCn(!isCn);
-        isCn ? setSrc("/salmon/img_salmon_jp.jpg") : setSrc("/salmon/img_salmon_cn.jpg");
+        isCn ? setSrc("/salmon/img_salmon_cn.jpg") : setSrc("/salmon/img_salmon_jp.jpg");
     }
 
     const handleIndicatorChange = (e) => {
@@ -50,7 +53,7 @@ const Salmon = () => {
                         />
                     </Switch>
 
-                    <span className="ml-1 w-[50px] text-center font-semibold text-sm">{isCn ? "日本語" : "中文"}</span>
+                    <span className="ml-1 w-[50px] text-center font-semibold text-sm">{isCn ? "中文" : "日本語"}</span>
                 </div>
             </div>
             <div className="flex items-center justify-center mt-4">

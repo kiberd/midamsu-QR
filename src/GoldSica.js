@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 const GoldSica = () => {
 
     const navigate = useNavigate();
+    const [isCn, setIsCn] = useState();
+    const [src, setSrc] = useState();
+
 
     useEffect(() => {
         const language = navigator.language; 
@@ -16,12 +19,14 @@ const GoldSica = () => {
         };
     } ,[]);
 
-    const [isCn, setIsCn] = useState();
-    const [src, setSrc] = useState("/goldcica/img_goldcica_cn.jpg");
+    useEffect(() => {
+        isCn ?  setSrc("/goldcica/img_goldcica_cn.jpg") :  setSrc("/goldcica/img_goldcica_jp.jpg");
+    } ,[isCn]);
+
 
     const handleClick = () => {
         setIsCn(!isCn);
-        isCn ? setSrc("/goldcica/img_goldcica_jp.jpg") : setSrc("/goldcica/img_goldcica_cn.jpg");
+        isCn ? setSrc("/goldcica/img_goldcica_cn.jpg") : setSrc("/goldcica/img_goldcica_jp.jpg");
     }
 
     const handleIndicatorChange = (e) => {
@@ -50,7 +55,7 @@ const GoldSica = () => {
                     />
                 </Switch>
 
-                <span className="ml-1 w-[50px] text-center font-semibold text-sm">{isCn ? "日本語" : "中文"}</span>
+                <span className="ml-1 w-[50px] text-center font-semibold text-sm">{isCn ? "中文" : "日本語"}</span>
             </div>
         </div>
         <div className="flex items-center justify-center mt-4">
